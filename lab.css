@@ -24,14 +24,14 @@
   }
   
   button {
-    font-size: 20px;
+    font-size: 50px;
     padding: 5px 10px;
-    border: 1px solid black;
-    border-radius: 5px;
+    border: 5px solid black;
+    border-radius: 10px;
     cursor: pointer;
   }
   button:hover {
-    border-color: #09507c;
+    border-color: #069af5;
     background-color: #deedf2;
   }
   

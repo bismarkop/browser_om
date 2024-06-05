@@ -14,9 +14,12 @@ p.textContent = `You have ${remainingGuesses} guesses remaining.`
 header1El.style.textAlign = "center";
 header1El.style.backgroundColor = "blue";
 header1El.style.padding = '10px';
-p.style.fontSize = '20px';
-divEl.style.alignContent = 'center';
+p.style.fontSize = '30px';
 divEl.style.textAlign = 'center';
+divEl.style.width = "600px"
+divEl.style.marginLeft = "auto"
+divEl.style.marginRight = "auto"
+header1El.style.font = "small-caps bold 44px/1 sans-serif"
 
 
 // Appendings
@@ -30,6 +33,7 @@ divEl.appendChild(startButton)
 startButton.addEventListener("click", startGame)
 startButton.textContent = "Start Game";
 startButton.style.textAlign = 'center'
+startButton.style.backgroundColor = "#70b7e4"
 
 
 
@@ -43,12 +47,16 @@ function startGame() {
     p.textContent = `You get 10 guesses!`
     while (playing) {
         let guess = prompt("Guess a number from 1-100.")
+        console.log(typeof(guess))
         if (guess === null) {
             alert('Game over. Press "Start Game" to play again.')
-            p.textContent = `You had ${remainingGuesses} guesses left! Press "Start Game to play again."`
+            p.textContent = `You had ${remainingGuesses} guesses left! Press "Start Game" to play again.`
             break
         }
-        else if (typeof(guess) !== 'number') {
+        else if (typeof(guess) !== 'number' && Number(guess) === "string") {
+            alert("You must enter a number.")
+        }
+        else if (guess === "") {
             alert("You must enter a number.")
         }
         else if (Number(guess) === randomNum) {
