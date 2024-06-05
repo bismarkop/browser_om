@@ -65,6 +65,7 @@ function startGame() {
             playing = false
             break
         }
+        // Come back to figure out how to stop remainingGuesses from being deducted for entering letters/words
         else if (guess !== randomNum) {
             p.textContent = `You have ${remainingGuesses} guesses remaining.`
             remainingGuesses -= 1
@@ -77,7 +78,7 @@ function startGame() {
             }
             else if (remainingGuesses === 0) {
                 alert('Game over. Press "Start Game" to play again.')
-                p.textContent = `You have no guesses remaining.`
+                p.textContent = `You have no guesses remaining. Press "Start Game" to play again.`
                 break
             }
             continue
