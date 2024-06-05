@@ -35,35 +35,45 @@ startButton.style.textAlign = 'center'
 
 function startGame() {
     let remainingGuesses = 10
+    let guesses = 0
     let playing = true
     let randomNum = Math.ceil(Math.random() * 100) + 1
     console.log(randomNum)
-    debugger
+    // debugger
+    p.textContent = `You get 10 guesses!`
     while (playing) {
-        console.log(playing)
         let guess = prompt("Guess a number from 1-100.")
-        if (Number(guess) === randomNum) {
+        if (guess === null) {
+            alert('Game over. Press "Start Game" to play again.')
+            p.textContent = `You had ${remainingGuesses} guesses left! Press "Start Game to play again."`
+            break
+        }
+        else if (typeof(guess) !== 'number') {
+            alert("You must enter a number.")
+        }
+        else if (Number(guess) === randomNum) {
             alert(`You got it! The answer was ${randomNum}.`)
-            
+            p.textContent = `You got the answer in ${guesses} guesses! Press "Start Game" to play again.`
             playing = false
             break
         }
         else if (guess !== randomNum) {
-            remainingGuesses -= 1
             p.textContent = `You have ${remainingGuesses} guesses remaining.`
-            console.log(p)
-            setTimeout(() => {
-                alert(`Incorrect! You have ${remainingGuesses} left.`)
-            }, "4000")
-            // alert(`Incorrect! You have ${remainingGuesses} left.`)
-            if (remainingGuesses === 0) {
-                alert("Game over. Press 'Start Game' to play again.")
+            remainingGuesses -= 1
+            guesses += 1
+            if (guess < randomNum) {
+                alert(`Incorrect! The number is higher than ${guess}. You have ${remainingGuesses} left.`)
+            }
+            else if (guess > randomNum) {
+                alert(`Incorrect! The number is lower than ${guess}. You have ${remainingGuesses} left.`)
+            }
+            else if (remainingGuesses === 0) {
+                alert('Game over. Press "Start Game" to play again.')
+                p.textContent = `You have no guesses remaining.`
                 break
             }
             continue
         }
-
     }
-
 }
 
